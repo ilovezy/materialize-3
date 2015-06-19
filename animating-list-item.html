@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title></title>
+<style>
+*{outline: none!important}
+li{
+    list-style: none;
+    background: #428bca;
+    color: white;
+    height: 0;
+    line-height: 2em;
+    margin: 0;
+    padding: 0 .5em;
+    overflow: hidden;
+    width: 10em
+}
+li.show{
+    height: 2em;
+    margin: 2px 0
+}
+.fade li{
+    transition: all .4s ease-out;
+    opacity: 0;
+    height: 2em
+}
+.fade li.show{
+    opacity: 1
+}
+
+/* slide-fade */
+.slide-fade li {
+    transition: all .4s ease-out;
+    opacity: 0
+}
+.slide-fade li.show{
+    opacity: 1
+}
+
+/* swinging in */
+.swing{
+    perspective: 100px
+}
+/* .swing li{ */
+/*     opacity: 0; */
+/*     transform: rotateX(-90deg); */
+/*     transition: all .5s cubic-bezier(.36, -.64, .34, 1.76) */
+/* } */
+.swing li {
+    opacity: 0;
+    transform: rotateY(-90deg);
+    transition: all .5s cubic-bezier(.36, -.64, .34, 1.76)
+}
+.swing li.show{
+    opacity: 1;
+    transform: none;
+    transition: all .5s cubic-bezier(.36, -.64, .34, 1.76)
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2 class="text-center"></h2>
+    <ul id="list" class="swing">
+        <li class="show">fuccccccccc</li>
+        <li class="show">fucccccccccccc</li>
+    </ul>
+    
+    <button id="add-to-list">Add a list item</button>
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+'use strict'
+
+// add items to a list - from cssanimation.rocks
+document.getElementById('add-to-list').onclick = function(){
+    var list = document.getElementById('list'), 
+        newLi = document.createElement('li');
+
+    newLi.innerHTML = 'A new item';
+    list.appendChild(newLi);
+    setTimeout(function(){
+        newLi.className = newLi.className + ' show'
+    }, 10)
+}
+
+</script>
+</body>
+</html>
